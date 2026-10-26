@@ -1,0 +1,24 @@
+global main
+extern printf
+
+section .data
+    num1 dd 13
+    ans dd 0
+
+    fmt db "ans of NOT = %d",10,0
+
+section .text
+main:
+
+    mov eax,[num1]
+    not eax
+    mov [ans],eax
+
+    push dword [ans]
+    push fmt
+    call printf
+
+    add esp,8
+
+    mov eax,0
+    ret
